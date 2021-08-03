@@ -146,7 +146,7 @@ def update():
     for line in file1:
         index += 1
         if string1 in line:
-            lt = line.split(" ")
+            lt = line.split("|")
             if string1 == lt[0]:
                 flag = 1
                 break
@@ -154,11 +154,11 @@ def update():
         print('Medicine', string1, 'Not Found')
     else:
         print('Medicine', string1, 'Found In Line', index)
-        with open("MEDICINEDB.txt.txt") as f:
+        with open("MEDICINEDB.txt") as f:
             lines = f.readlines()
             str1 = lines[index - 1]
             lines.remove(str1)
-            lst1 = str1.split(" ")
+            lst1 = str1.split("|")
             print("Select Action to Modify the Medicine Details: ")
             print("1. Modify PPU")
             print("2. Modify Quantity")
@@ -177,7 +177,7 @@ def update():
             if ch1 == 4:
                 exp = input("Enter the new expiry date: ")
                 lst1[5] = exp
-            strg = " ".join(lst1)
+            strg = "|".join(lst1)
             lines.append(strg)
             udate_medicine = open("MEDICINEDB.txt", "w")
             udate_medicine.truncate(0)
